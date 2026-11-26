@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr-CH">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Le coût d’une séance · Genève</title><meta name="description" content="Estimez le coût salarial d’une séance avec le barème 2024 de l’État de Genève. Classes, annuités et chronomètre."><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a class="brand" href="./">Le temps collectif<span>Genève</span></a><a href="#methode">Comprendre le calcul</a></header>
+<main>
+<section class="intro"><h1>Combien coûte<br>votre séance ?</h1><p>Quelques personnes autour d’une table.<br>Du temps qui compte, un coût qui se mesure.</p></section>
+<div class="calculator">
+<section class="setup" aria-label="Configuration de la séance">
+<div class="section-title"><h2>Votre séance</h2><span>Barème 2024 · CHF</span></div>
+<div class="tabs" role="group" aria-label="Mode de saisie"><button id="simple" class="selected" aria-pressed="true">Même classe pour tous</button><button id="detail" aria-pressed="false">Classes différentes</button></div>
+<div id="shared"><div class="field"><label for="count">Nombre de personnes</label><div class="stepper"><button id="minus" aria-label="Retirer une personne">−</button><input id="count" type="number" min="1" max="500" step="1" value="6"><button id="plus" aria-label="Ajouter une personne">+</button></div></div>
+<div class="pair"><div class="field"><label for="grade">Classe de traitement</label><select id="grade"></select></div><div class="field"><label for="level">Annuité / niveau</label><select id="level"></select></div></div><p class="salary" id="salary"></p></div>
+<div id="individual" hidden><div id="people"></div><button class="text-button" id="add">Ajouter un groupe</button></div>
+<div class="duration"><label for="minutes">Durée de la séance <strong id="duration-label">1 h 00</strong></label><input id="minutes" type="range" min="5" max="240" step="5" value="60"><div class="presets"><button data-minutes="15">15 min</button><button data-minutes="30">30 min</button><button data-minutes="60" class="active">1 h</button><button data-minutes="120">2 h</button></div></div>
+<div class="field frequency"><label for="frequency">Nombre de séances par an</label><input id="frequency" type="number" min="1" max="1000" step="1" value="1"><small>Par exemple : 12 pour une séance mensuelle, 47 pour une séance hebdomadaire hors congés.</small></div>
+<details class="options"><summary>Inclure des charges patronales</summary><label for="charges">Majoration estimée (%)</label><input id="charges" type="number" min="0" max="100" step="0.1" value="0"><p>Le PDF ne précise pas les charges patronales. Saisissez le taux adapté à votre situation ; 0 % par défaut.</p></details>
+<p id="error" role="alert" hidden>Vérifiez les valeurs : personnes et séances entières positives, charges entre 0 et 100 %.</p>
+</section>
+<section class="result" aria-label="Résultat de l’estimation"><div class="result-top"><h2>Coût salarial estimé</h2><span id="basis">Hors charges patronales</span></div><div class="amount"><span id="total">401.70</span><span class="currency">CHF</span></div><p class="equation" id="equation"></p><div class="metrics"><div><span>Temps collectif</span><strong id="collective">6 heures</strong></div><div><span>Coût sur l’année</span><strong id="yearly">401.70 CHF</strong></div></div>
+<div class="chrono"><div class="chrono-title"><h3>Et en direct ?</h3><span id="timer-state">Prêt à démarrer</span></div><p>Rendez visible le temps de la séance.</p><div class="live-values"><time id="time">00:00:00</time><strong id="live-cost">0.00 CHF</strong></div><div class="timer-actions"><button id="start" class="primary">Démarrer le chrono</button><button id="reset" aria-label="Remettre le chronomètre à zéro">Réinitialiser</button></div><small>Le chrono utilise les participants et les taux affichés. La configuration est figée pendant son utilisation.</small></div>
+<button class="copy" id="copy">Copier le récapitulatif</button><p id="copy-status" role="status"></p></section>
+</div>
+<section class="method" id="methode"><h2>Un calcul simple,<br>une base transparente.</h2><div><p>Le coût est la somme des taux horaires des personnes présentes, multipliée par la durée de la séance. Le 13e salaire est déjà inclus.</p><p>Les taux proviennent de la colonne « Heure y.c. 13ème » de l’échelle des traitements valable dès le <strong>1er janvier 2024</strong>. L’annuité 10 correspond au niveau 10 du document ; elle ne déduit pas automatiquement votre niveau de vos années de service.</p><p>Cette estimation mesure le temps salarial mobilisé. Elle ne comprend ni locaux, ni matériel, ni charges patronales sauf majoration renseignée. Le coût ne préjuge pas de l’utilité de la séance.</p><a href="Echelle%20Traitement%202024.pdf" target="_blank" rel="noopener">Consulter le barème source (PDF)</a></div></section>
+</main><footer><span>Outil indépendant · Base salariale 2024</span><span>Calcul local dans votre navigateur. Aucune donnée enregistrée.</span></footer><script src="salaries.js"></script><script src="app.js"></script></body></html>
